@@ -10,8 +10,17 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="AuthForm" component={AuthForm} options={{ headerShown: false }} />
-        <Stack.Screen name="Prueba" component={Prueba} />
+
+        <Stack.Screen 
+        name="AuthForm" 
+        component={AuthForm} 
+        options={{ headerShown: false }} />
+
+        <Stack.Screen 
+        name="Prueba" 
+        component={Prueba} 
+        options={{headerShown: false}}/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -7,7 +7,7 @@ function AuthForm({ navigation }) {
   return (
     <ImageBackground source={require('../assets/landing_bg3.png')} style={styles.backgroundImage}>
       <View style={styles.container}>
-        <View style={styles.card}>
+        <View style={[styles.card, { height: showRegistration ? 580 : 420 }]}>
           <Text style={styles.text}>{showRegistration ? 'Regístrese' : 'Iniciar sesión'}</Text>
 
           {!showRegistration && (
