@@ -1,48 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
-import AuthForm from './components/authform';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import Prueba from './screens/prueba'; // Importa tu pantalla Prueba
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AuthForm from './components/authform';
+import Prueba from './screens/prueba';
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+const App = () => {
   return (
-
-    <View style={styles.container}>
-      <NavigationContainer>
-        <ImageBackground source={require('./assets/landing_bg3.png')} style={styles.backgroundImage} />
-        <StatusBar style="auto" />
-
-        <View style={styles.overlay}>
-          <Stack.Navigator>
-            <Stack.Screen name="AuthForm" component={AuthForm} />
-            <Stack.Screen name="Prueba" component={Prueba} />
-          </Stack.Navigator>
-        </View>
-      </NavigationContainer>
-    </View>
-
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="AuthForm" component={AuthForm} options={{ headerShown: false }} />
+        <Stack.Screen name="Prueba" component={Prueba} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  backgroundImage: {
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    zIndex: -1,
-  },
-  overlay: {
-    zIndex: 1,
-  }
-
-});
-
+export default App;

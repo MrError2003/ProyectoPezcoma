@@ -1,25 +1,20 @@
-import Card from '../components/card';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from 'react-native-screens/native-stack';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
+const Prueba = () => {
+  return (
+    <View style={styles.container}>
+      <Text>Pantalla de Prueba</Text>
+    </View>
+  );
+};
 
-export default function Prueba() {
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
-    return (
-
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen
-                    name="Prueba de cambio de pantalla"
-                    component={Card}
-                    options={{ title: 'Prueba' }}
-                />
-                <Stack.Screen name="Profile" component={ProfileScreen} />
-            </Stack.Navigator>
-        </NavigationContainer>
-
-    );
-}
-
-const Stack = createNativeStackNavigator();
-
+export default Prueba;
