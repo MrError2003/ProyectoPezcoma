@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 const Card = (props) => {
     return (
         <View style={{...styles.card, ...props.style}}>
-            <Text>{props.children}</Text>
+            <Text>Prueba de cambio de pantalla</Text>
         </View>
     );
 }

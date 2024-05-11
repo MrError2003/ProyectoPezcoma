@@ -1,39 +1,47 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Card from './components/card';
+import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import AuthForm from './components/authform';
+import { NavigationContainer } from '@react-navigation/native';
+import Prueba from './screens/prueba'; // Importa tu pantalla Prueba
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <NavigationContainer>
+        <ImageBackground source={require('./assets/landing_bg3.png')} style={styles.backgroundImage} />
+        <StatusBar style="auto" />
 
-      <Card style={styles.container2}>
-        <Text>Card 1</Text>
-      </Card>
-
-      <Card>
-        <Text>Card 2</Text>
-      </Card>
-
+        <View style={styles.overlay}>
+          <Stack.Navigator>
+            <Stack.Screen name="AuthForm" component={AuthForm} />
+            <Stack.Screen name="Prueba" component={Prueba} />
+          </Stack.Navigator>
+        </View>
+      </NavigationContainer>
     </View>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  container2: {
-    padding: 20,
-    margin: 10,
-    backgroundColor: 'green',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: 'black',
+  backgroundImage: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    zIndex: -1,
+  },
+  overlay: {
+    zIndex: 1,
   }
 
 });
