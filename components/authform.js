@@ -18,9 +18,11 @@ function AuthForm({ navigation }) {
 
           {showRegistration && (
             <>
-              <TextInput style={styles.input} placeholder="Nombre" />
-              <TextInput style={styles.input} placeholder="Apellido" />
-              <TextInput style={styles.input} placeholder="Edad" />
+              <TextInput style={styles.input} placeholder="Nombre Completo" />
+              <TextInput style={styles.input} placeholder="Fecha de nacimiento" />
+              <TextInput style={styles.input} placeholder="Correo electronico" />
+              <TextInput style={styles.input} placeholder="Contraseña" />
+              <TextInput style={styles.input} placeholder="Confirmar contraeña" />
             </>
           )}
 
