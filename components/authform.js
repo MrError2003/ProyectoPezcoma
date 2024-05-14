@@ -1,8 +1,40 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Switch, StyleSheet, ImageBackground } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Text, TextInput, Button, Switch, StyleSheet, ImageBackground, Alert } from 'react-native';
 
 function AuthForm({ navigation }) {
   const [showRegistration, setShowRegistration] = useState(false);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const response = await fetch('https://integrador4to.onrender.com/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+
+      const data = await response.json();
+      // Guardar el token en el almacenamiento local o en el contexto de la aplicación
+      await AsyncStorage.setItem('token', data.token);
+
+      // navigation.navigate('Inicio') // Redirigir a la pantalla de inicio
+      navigation.navigate('Prueba')
+
+    } catch (error) {
+      Alert.alert('Error', error.message);
+      console.error(error);
+    }
+  };
 
   return (
     <ImageBackground source={require('../assets/landing_bg3.png')} style={styles.backgroundImage}>
@@ -11,10 +43,19 @@ function AuthForm({ navigation }) {
           <Text style={styles.text}>{showRegistration ? 'Regístrese' : 'Iniciar sesión'}</Text>
 
           {!showRegistration && (
-            <TextInput style={styles.input} placeholder="Correo electrónico" />
+            <TextInput style={styles.input} placeholder="Correo electrónico" onChangeText={setEmail}
+              value={email} />
           )}
 
-          <TextInput style={styles.input} placeholder="Contraseña" secureTextEntry />
+          <TextInput style={styles.input} placeholder="Contraseña" secureTextEntry onChangeText={setPassword}
+            value={password} />
+
+          {!showRegistration && (
+            <View style={styles.buttonContainer}>
+            <Button title='Iniciar sesion' onPress={handleLogin}/>
+          </View>
+          )}
+
 
           {showRegistration && (
             <>
@@ -23,12 +64,15 @@ function AuthForm({ navigation }) {
               <TextInput style={styles.input} placeholder="Correo electronico" />
               <TextInput style={styles.input} placeholder="Contraseña" />
               <TextInput style={styles.input} placeholder="Confirmar contraeña" />
+
+              <View style={styles.buttonContainer}>
+                <Button title='Registrarse' />
+              </View>
+
             </>
           )}
 
-          <View style={styles.buttonContainer}>
-            <Button title={showRegistration ? 'Registrarse' : 'Iniciar sesión'} />
-          </View>
+          
 
           <View style={styles.buttonContainer}>
             <Button title="Prueba" onPress={() => navigation.navigate('Prueba')} />

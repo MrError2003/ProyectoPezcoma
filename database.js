@@ -8,6 +8,7 @@ const clientOptions = {
     useUnifiedTopology: true,
  };
 
+
 async function run() {
   try {
     // Create a Mongoose client with a MongoClientOptions object to set the Stable API version
