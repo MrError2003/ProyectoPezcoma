@@ -24,11 +24,15 @@ function AuthForm({ navigation }) {
       }
 
       const data = await response.json();
-      // Guardar el token en el almacenamiento local o en el contexto de la aplicación
-      await AsyncStorage.setItem('token', data.token);
-
-      // navigation.navigate('Inicio') // Redirigir a la pantalla de inicio
-      navigation.navigate('Prueba')
+      // Verifica que el token JWT esté presente en la respuesta del backend
+      if (data && data.token) {
+        // Guarda el token JWT en AsyncStorage
+        await AsyncStorage.setItem('token', data.token);
+        // Redirige a la pantalla 'Prueba' (o la que necesites)
+        navigation.navigate('Prueba');
+      } else {
+        throw new Error('Token no encontrado en la respuesta del servidor');
+      }
 
     } catch (error) {
       Alert.alert('Error', error.message);
