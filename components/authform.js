@@ -29,7 +29,7 @@ function AuthForm({ navigation }) {
         // Guarda el token JWT en AsyncStorage
         await AsyncStorage.setItem('token', data.token);
         // Redirige a la pantalla 'Prueba' (o la que necesites)
-        navigation.navigate('Prueba');
+        navigation.navigate('Postcards');
       } else {
         throw new Error('Token no encontrado en la respuesta del servidor');
       }
@@ -43,21 +43,25 @@ function AuthForm({ navigation }) {
   return (
     <ImageBackground source={require('../assets/landing_bg3.png')} style={styles.backgroundImage}>
       <View style={styles.container}>
-        <View style={[styles.card, { height: showRegistration ? 580 : 420 }]}>
+        <View style={[styles.card, { height: showRegistration ? 540 : 360 }]}>
           <Text style={styles.text}>{showRegistration ? 'Regístrese' : 'Iniciar sesión'}</Text>
 
           {!showRegistration && (
-            <TextInput style={styles.input} placeholder="Correo electrónico" onChangeText={setEmail}
-              value={email} />
+            <>
+              <TextInput style={styles.input} placeholder="Correo electrónico" onChangeText={setEmail}
+                value={email} />
+
+              <TextInput style={styles.input} placeholder="Contraseña" secureTextEntry onChangeText={setPassword}
+                value={password} />
+            </>
           )}
 
-          <TextInput style={styles.input} placeholder="Contraseña" secureTextEntry onChangeText={setPassword}
-            value={password} />
+
 
           {!showRegistration && (
             <View style={styles.buttonContainer}>
-            <Button title='Iniciar sesion' onPress={handleLogin}/>
-          </View>
+              <Button title='Iniciar sesion' onPress={handleLogin} />
+            </View>
           )}
 
 
@@ -76,11 +80,13 @@ function AuthForm({ navigation }) {
             </>
           )}
 
-          
-
-          <View style={styles.buttonContainer}>
+          {/* <View style={styles.buttonContainer}>
             <Button title="Prueba" onPress={() => navigation.navigate('Prueba')} />
           </View>
+
+          <View style={styles.buttonContainer}>
+            <Button title="Prueba" onPress={() => navigation.navigate('Postcards')} />
+          </View> */}
 
           <View style={styles.switchContainer}>
             <Text>Iniciar sesión</Text>
@@ -139,6 +145,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 10,
+    paddingTop: 20,
   },
   backgroundImage: {
     flex: 1,

@@ -5,6 +5,8 @@ const Prueba = () => {
   return (
     <View style={styles.container}>
       <Text>Pantalla de Prueba</Text>
+
+      
     </View>
   );
 };
@@ -17,4 +19,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Prueba;
+export default Prueba;
