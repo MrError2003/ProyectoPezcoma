@@ -4,4 +4,4 @@
 
 > npm install mongoose --save
 
-
+> npm install react-native-calendars moment --save
