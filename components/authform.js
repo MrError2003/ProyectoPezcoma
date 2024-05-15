@@ -35,12 +35,12 @@ function AuthForm({ navigation }) {
           </View>
 
           <View style={styles.switchContainer}>
-            <Text>Iniciar sesión</Text>
+            <Text style={styles.text}>Iniciar sesión</Text>
             <Switch
               value={showRegistration}
               onValueChange={(value) => setShowRegistration(value)}
             />
-            <Text>Registro</Text>
+            <Text style={styles.text}>Registro</Text>
           </View>
         </View>
       </View>
@@ -69,12 +69,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingBottom: 40,
   },
-  text: {
-    fontSize: 20,
-    color: 'black',
-    padding: 10,
-    paddingTop: 20,
-  },
+    text: {
+      fontSize: 20,
+      color: 'black',
+      padding: 10,
+      paddingTop: 20,
+      
+    },
   input: {
     width: 260,
     height: 40,
