@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const Prueba = () => {
   return (
     <View style={styles.container}>
-      <Text>Pantalla de Prueba</Text>
+      <Text style={styles.text}>Pantalla de Prueba</Text>
     </View>
   );
 };
@@ -15,6 +15,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text: {
+    fontSize: 20,
+    color: 'red',
+    padding: 10,
+    paddingTop: 20,
+},
 });
 
 export default Prueba;
