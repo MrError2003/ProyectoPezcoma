@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { View, Text, TextInput, Button, Switch, StyleSheet, ImageBackground, Alert } from 'react-native';
+import footer from './components/footer';
 
 function AuthForm({ navigation }) {
   const [showRegistration, setShowRegistration] = useState(false);
@@ -97,6 +98,7 @@ function AuthForm({ navigation }) {
             <Text>Registro</Text>
           </View>
         </View>
+        <footer />
       </View>
     </ImageBackground>
   );
