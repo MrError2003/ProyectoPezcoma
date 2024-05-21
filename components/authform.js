@@ -10,7 +10,7 @@ function AuthForm({ navigation }) {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('https://integrador4to.onrender.com/api/auth/login', {
+      const response = await fetch('https://integrador4to.onrender.com/api/auth/mobile-login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
