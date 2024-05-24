@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AuthForm from './components/authform';
 import Prueba from './screens/prueba';
 import Postcards from './screens/postcards';
+import tutorialScreen from './screens/tutoriales';
 
 
 const Stack = createNativeStackNavigator();
@@ -26,6 +27,12 @@ const App = () => {
         <Stack.Screen
           name="Postcards"
           component={Postcards}
+          options={{ headerShown: false }} />
+
+          
+        <Stack.Screen 
+          name="tutoriales" 
+          component={tutorialScreen}
           options={{ headerShown: false }} />
 
       </Stack.Navigator>
