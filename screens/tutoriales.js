@@ -27,6 +27,7 @@ const tutorialScreen = ({ route }) => {
     );
 };
 
+//Estilos
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     },
     video: {
         width: 300,
-        height: 200, // ajustar las dimensiones del video según sea necesario
+        height: 200
     },
 });
 
