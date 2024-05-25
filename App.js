@@ -31,7 +31,7 @@ const App = () => {
 
           
         <Stack.Screen 
-          name="tutoriales" 
+          name="tutorialScreen" 
           component={tutorialScreen}
           options={{ headerShown: false }} />
 

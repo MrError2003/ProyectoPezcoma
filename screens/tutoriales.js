@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Video } from "react-native";
-import { useNavigation } from '@react-navigation/NativeAppEventEmitter';
-//se crea este screen para agregar videotutoriales de preparaciones o recetas con pescado
+import { useNavigation } from '@react-navigation/native';
 
+//se crea este screen para agregar videotutoriales de preparaciones o recetas con pescado
 const tutorialScreen = ({ route }) => {
     const navigation = useNavigation(); //para obtener la referencia de navegacion
 

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { View, Text, TextInput, Button, Switch, StyleSheet, ImageBackground, Alert } from 'react-native';
-import footer from './components/footer';
+import { View, Text, TextInput, Button, Switch, StyleSheet, ImageBackground, Alert, ActivityIndicator } from 'react-native';
 
 function AuthForm({ navigation }) {
   const [showRegistration, setShowRegistration] = useState(false);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false); // Estado para manejar la visibilidad del loader
+
 
   const handleLogin = async () => {
+    setLoading(true); // Mostrar loader mientras se realiza la petición
     try {
       const response = await fetch('https://integrador4to.onrender.com/api/auth/mobile-login', {
         method: 'POST',
@@ -38,6 +40,8 @@ function AuthForm({ navigation }) {
     } catch (error) {
       Alert.alert('Error', error.message);
       console.error(error);
+    } finally {
+      setLoading(false); // Ocultar loader
     }
   };
 
@@ -61,10 +65,13 @@ function AuthForm({ navigation }) {
 
           {!showRegistration && (
             <View style={styles.buttonContainer}>
-              <Button title='Iniciar sesion' onPress={handleLogin} />
+              {loading ? (
+                <ActivityIndicator size="large" color="#0000ff" /> // Mostrar loader si está cargando
+              ) : (
+                <Button title='Iniciar sesion' onPress={handleLogin} />
+              )}
             </View>
           )}
-
 
           {showRegistration && (
             <>
@@ -98,7 +105,6 @@ function AuthForm({ navigation }) {
             <Text>Registro</Text>
           </View>
         </View>
-        <footer />
       </View>
     </ImageBackground>
   );
