@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, TouchableOpacity, Video } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
 //se crea este screen para agregar videotutoriales de preparaciones o recetas con pescado
-const tutorialScreen = ({ route }) => {
+const Tutorials = ({ route }) => {
     const navigation = useNavigation(); //para obtener la referencia de navegacion
 
     const [videoUri, setVideoUri] = useState(''); // para almacenar uri del video
@@ -51,4 +51,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default tutorialScreen;
+export default Tutorials;
